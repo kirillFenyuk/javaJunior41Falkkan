@@ -2,7 +2,7 @@ package HomeWorkFactory;
 
 public class BelarusianHen extends Hen {
 
-    private String country="Беларусь!!!";
+    private String country="Беларусь";
 
     private int kolEgg;
 
