@@ -54,7 +54,7 @@ public class Main {
         a.printToConsole();
 
         System.out.println("-- Детерминант матрици");
-        // результат
+        System.out.println(a.determinant());
 
         System.out.println("-- Заполнеа ли матрица нулями?");
         //Матрица заполненая нулями для проверки метода
@@ -70,7 +70,7 @@ public class Main {
                 {0, 1, 0},
                 {0, 0, 1}};
         Matrix d = new Matrix(numsForD);
-        System.out.println(c.isIdentityMatrix());
+        System.out.println(d.isIdentityMatrix());
 
         System.out.println("-- Проверяет является ли матрица квадратной");
         System.out.println(a.isSquareMatrix());
