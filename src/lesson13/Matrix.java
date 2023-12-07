@@ -225,11 +225,10 @@ public class Matrix implements IMatrix {
 
         for (int i = 0; i < this.getRows(); i++) {
             for (int j = 0; j < this.getColumns(); j++) {
-                if (this.getValueAt(i, j) !=1) {
+                if (this.getValueAt(i, i) != 1) {
                     return false;
                 }
-
-                if (this.getValueAt(i, j) !=0) {
+                if (i != j && this.getValueAt(i, j) != 0) {
                     return false;
                 }
             }

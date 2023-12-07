@@ -67,8 +67,8 @@ public class Main {
         System.out.println("-- Проверяет заполнена ли матрица по диагонали 1, а всё остальное 0");
         //Матрица  для проверки метода
         double[][] numsForD = {{1, 0, 0},
-                {0, 1, 0},
-                {0, 0, 1}};
+                               {0, 1, 0},
+                               {0, 0, 1}};
         Matrix d = new Matrix(numsForD);
         System.out.println(d.isIdentityMatrix());
 
