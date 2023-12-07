@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         double[][] numsForA = {{2, 3, 4},
-                {7, 3, 9},
-                {7, 3, 5}};
+                               {7, 3, 9},
+                               {7, 3, 5}};
 
         Matrix a = new Matrix(numsForA);
 
@@ -17,8 +17,8 @@ public class Main {
         System.out.println(a.getValueAt(0, 0));
 
         double[][] numsForB = {{5, 5, 5},
-                {5, 5, 5},
-                {5, 5, 5}};
+                               {5, 5, 5},
+                               {5, 5, 5}};
 
         Matrix b = new Matrix(numsForB);
 

@@ -149,7 +149,7 @@ public class Matrix implements IMatrix {
 
         for (int i = 0; i < this.getRows(); i++) {
             for (int j = 0; j < this.getColumns(); j++) {
-                result.setValueAt(j,i,this.getValueAt(i,j));
+                result.setValueAt(j, i, this.getValueAt(i, j));
             }
         }
         return result;
@@ -159,15 +159,53 @@ public class Matrix implements IMatrix {
     public void fillMatrix(double value) {
         for (int i = 0; i < getRows(); i++) {
             for (int j = 0; j < getColumns(); j++) {
-               this.setValueAt(i, j, value);
+                this.setValueAt(i, j, value);
             }
         }
     }
 
     @Override
     public double determinant() {
-        return 0;
+
+        if (!isSquareMatrix()) {
+            throw new UnsupportedOperationException("Determinant can only be calculated for square matrices");
+        }
+
+        int n = this.getRows();
+        if (n == 1) {
+            return this.getValueAt(0, 0);
+        } else if (n == 2) {
+            return this.getValueAt(0, 0) * this.getValueAt(1, 1) - this.getValueAt(0, 1) * this.getValueAt(1, 0);
+        } else {
+            double det = 0;
+            for (int i = 0; i < n; i++) {
+                det += this.getValueAt(0, i) * cofactor(0, i).determinant() * ((i % 2 == 0) ? 1 : -1);
+            }
+            return det;
+        }
     }
+
+    // Helper method to compute the cofactor matrix
+    private IMatrix cofactor(int row, int col) {
+        Matrix cofactorMatrix = new Matrix(this.getRows() - 1, this.getColumns() - 1);
+        int rowCount = 0;
+        for (int i = 0; i < this.getRows(); i++) {
+            if (i == row) {
+                continue;
+            }
+            int colCount = 0;
+            for (int j = 0; j < this.getColumns(); j++) {
+                if (j == col) {
+                    continue;
+                }
+                cofactorMatrix.setValueAt(rowCount, colCount, this.getValueAt(i, j));
+                colCount++;
+            }
+            rowCount++;
+        }
+        return cofactorMatrix;
+    }
+
 
     @Override
     public boolean isNullMatrix() {
@@ -178,7 +216,7 @@ public class Matrix implements IMatrix {
 
         for (int i = 0; i < getRows(); i++) {
             for (int j = 0; j < getColumns(); j++) {
-                if (getValueAt(i,j)==result.getValueAt(i,j)){
+                if (getValueAt(i, j) == result.getValueAt(i, j)) {
                     return true;
                 }
             }
@@ -194,15 +232,15 @@ public class Matrix implements IMatrix {
 
         for (int i = 0; i < result.getRows(); i++) {
             for (int j = 0; j < result.getColumns(); j++) {
-                if (result.getValueAt(i,j)==(i&j)){
-                    result.setValueAt(i,j,1);
+                if (result.getValueAt(i, j) == (i & j)) {
+                    result.setValueAt(i, j, 1);
                 }
             }
         }
 
         for (int i = 0; i < getRows(); i++) {
             for (int j = 0; j < getColumns(); j++) {
-                if (getValueAt(i,j)==result.getValueAt(i,j)){
+                if (getValueAt(i, j) == result.getValueAt(i, j)) {
                     return true;
                 }
             }
@@ -230,9 +268,9 @@ public class Matrix implements IMatrix {
 
         for (int i = 0; i < this.getRows(); i++) {
             for (int j = 0; j < this.getRows(); j++) {
-                System.out.println(this.getValueAt(i, j) + " ");
+                System.out.print(this.getValueAt(i, j) + " ");
             }
-            System.out.println("\t");
+            System.out.println(" ");
         }
 
     }
