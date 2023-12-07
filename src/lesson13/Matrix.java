@@ -171,17 +171,57 @@ public class Matrix implements IMatrix {
 
     @Override
     public boolean isNullMatrix() {
+
+        Matrix result = new Matrix(this.getRows(), this.getColumns());
+
+        result.fillMatrix(0);
+
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                if (getValueAt(i,j)==result.getValueAt(i,j)){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     @Override
     public boolean isIdentityMatrix() {
+        Matrix result = new Matrix(this.getRows(), this.getColumns());
+
+        result.fillMatrix(0);
+
+        for (int i = 0; i < result.getRows(); i++) {
+            for (int j = 0; j < result.getColumns(); j++) {
+                if (result.getValueAt(i,j)==(i&j)){
+                    result.setValueAt(i,j,1);
+                }
+            }
+        }
+
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                if (getValueAt(i,j)==result.getValueAt(i,j)){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     @Override
     public boolean isSquareMatrix() {
-        return false;
+
+
+        if (this.getRows() != this.getColumns()) {
+            return false;
+        }
+
+        if (this.getColumns() != this.getColumns()) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -192,7 +232,7 @@ public class Matrix implements IMatrix {
             for (int j = 0; j < this.getRows(); j++) {
                 System.out.println(this.getValueAt(i, j) + " ");
             }
-            System.out.println();
+            System.out.println("\t");
         }
 
     }
