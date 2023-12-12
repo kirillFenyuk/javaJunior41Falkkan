@@ -26,5 +26,14 @@ public class Main {
 
         Collection<Integer> intersectionResult = util.intersection(array,linked);
         System.out.println(intersectionResult);
+
+        Collection<Integer> unionWithoutDuplicateResult = util.unionWithoutDuplicate(array,linked);
+        System.out.println(unionWithoutDuplicateResult);
+
+        Collection<Integer> intersectionWithoutDuplicateResult = util.intersectionWithoutDuplicate(array,linked);
+        System.out.println(intersectionWithoutDuplicateResult);
+
+        Collection<Integer> differenceResult = util.difference(array,linked);
+        System.out.println(differenceResult);
     }
 }
