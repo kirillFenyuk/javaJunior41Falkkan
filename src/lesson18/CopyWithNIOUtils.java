@@ -17,8 +17,8 @@ public class CopyWithNIOUtils implements  FileCopyUtils{
         }
 
         Path copied = Paths.get(destination);
-
         Path originalPath = Paths.get(source);
+
         try {
             Files.copy(originalPath, copied, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
