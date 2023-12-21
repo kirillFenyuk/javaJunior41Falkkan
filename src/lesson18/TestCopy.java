@@ -7,6 +7,7 @@ public class TestCopy {
         CopyWithNIOUtils copyWithNIOUtils = new CopyWithNIOUtils();
         CopyWithGuava copyWithGuava = new CopyWithGuava();
         CopyWithStream copyWithStream = new CopyWithStream();
+        CopyWithApache copyWithApache = new CopyWithApache();
 
 
         // Сделать ещё тесты технологий
@@ -48,10 +49,19 @@ public class TestCopy {
         long time7 = System.currentTimeMillis();
         try {
             copyWithStream.copyFile("D:\\Видео\\InShot_20210925_204451973.mp4", "src\\lesson18\\copy3.mp4");
-        }catch (FileCopyFailedException e){
+        } catch (FileCopyFailedException e) {
             e.printStackTrace();
         }
         long time8 = System.currentTimeMillis();
         System.out.println("Copy with one byte: " + (time8 - time7));
+
+        long time9 = System.currentTimeMillis();
+        try {
+            copyWithApache.copyFile("D:\\Видео\\InShot_20210925_204451973.mp4", "src\\lesson18\\copy4.mp4");
+        } catch (FileCopyFailedException e) {
+            e.printStackTrace();
+        }
+        long time10 = System.currentTimeMillis();
+        System.out.println("Copy with one byte: " + (time10 - time9));
     }
 }
