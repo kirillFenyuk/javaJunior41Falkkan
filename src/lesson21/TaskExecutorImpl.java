@@ -2,6 +2,7 @@ package lesson21;
 
 public class TaskExecutorImpl extends Thread implements TaskExecutor {
     private TasksStorage storage;
+    private boolean stopFlag = true;
 
     @Override
     public void setStorage(TasksStorage storage) throws NullPointerException {
@@ -15,7 +16,7 @@ public class TaskExecutorImpl extends Thread implements TaskExecutor {
 
     @Override
     public void run() {
-        while (true) {
+        while (stopFlag) {
             // или задача или null
             Task task = storage.get();
             if (task != null) { // если задача есть
@@ -34,7 +35,8 @@ public class TaskExecutorImpl extends Thread implements TaskExecutor {
                     }
                 }
             } else { // если задачи закончились
-
+                System.out.println("Я поток " + Thread.currentThread().getName() + " завершаю работу, задач нет " + task);
+                stopFlag = false;
             }
         }
     }

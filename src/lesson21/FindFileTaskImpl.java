@@ -33,14 +33,14 @@ public class FindFileTaskImpl extends AbstractTask implements FindFilesTask {
             throw new TaskExecutionFailedException("Такой папки не существует!!! " + directory);
         }
 
-        if (startDir.isFile()){
+        if (startDir.isFile()) {
             throw new TaskExecutionFailedException("Это не папка!!! " + directory);
         }
 
         File[] files = startDir.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                if (pathname.getName().contains(searchString)){
+                if (pathname.getName().contains(searchString)) {
                     return true;
                 }
                 return false;
@@ -48,7 +48,7 @@ public class FindFileTaskImpl extends AbstractTask implements FindFilesTask {
         });
 
         out.println("Результат выполнения задачи: -------------");
-        for (File f: files) {
+        for (File f : files) {
             out.println(f.getAbsoluteFile());
         }
         out.println("----------------------------------");
