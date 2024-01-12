@@ -35,7 +35,7 @@ public class TaskExecutorImpl extends Thread implements TaskExecutor {
                     }
                 }
             } else { // если задачи закончились
-                System.out.println("Я поток " + Thread.currentThread().getName() + " завершаю работу, задач нет " + task);
+                System.out.println("Я поток - " + Thread.currentThread().getName() + " завершаю работу, задач нет " + task);
                 stopFlag = false;
             }
         }

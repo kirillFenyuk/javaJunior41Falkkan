@@ -49,7 +49,7 @@ public class FindFileTaskImpl extends AbstractTask implements FindFilesTask {
 
         out.println("Результат выполнения задачи: -------------");
         for (File f : files) {
-            out.println(f.getAbsoluteFile());
+            out.println(f.getAbsolutePath());
         }
         out.println("----------------------------------");
     }

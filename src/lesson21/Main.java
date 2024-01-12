@@ -20,13 +20,13 @@ public class Main {
 
         FindFilesTask task4 = new FindFileTaskImpl();
         task4.setDirectory("D:\\Видео");
-        task4.setFileNameSearchString(".mp4");
+        task4.setFileNameSearchString("а");
         task4.setPrintStream(System.out);
 
         FindFilesTask task5 = new FindFileTaskImpl();
-        task4.setDirectory("D:\\Видеоghf");
-        task4.setFileNameSearchString(".java");
-        task4.setPrintStream(System.out);
+        task5.setDirectory("D:\\Видео");
+        task5.setFileNameSearchString("622");
+        task5.setPrintStream(System.out);
 
         TasksStorage tasksStorage = new TaskStoregeImpl();
         tasksStorage.add(task4);
